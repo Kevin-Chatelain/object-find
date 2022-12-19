@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        const valuesArray = {
+            element: {
+                element: {
+                    title: "Ce titre est loin",
+                    element: {
+                        element: {
+                            element: {
+                                element: {
+                                    title: "Ce titre est super loin",
+                                    element: {
+                                        element: {
+                                            element: {
+                                                element: {
+                                                    label: "Le menu tant convoité",
+                                                    menu: {
+                                                        name: "Un très bon vin",
+                                                        region: "Alsace",
+                                                        price: "30.00€"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function recusriveSearch(obj) {
+            for(const[key, value] of Object.entries(obj)) {
+                if(typeof value === "object" && key != "menu") {
+                    recusriveSearch(value); 
+                }
+
+                else if(typeof value !== "object" && key != "menu") {
+                    console.log(value);
+                }
+
+                else if(key == "menu") {
+                    for(const[label, element] of Object.entries(value)) {
+                        console.log(label+" : "+element);                    
+                    }
+                }
+            }   
+        }
+
+        recusriveSearch(valuesArray);
+        
+    </script>
+
+</body>
+
+</html>
